@@ -1,5 +1,5 @@
-from fastapi import APIRouter, HTTPException, Query
-from app.services.ibge_service import get_countries, get_country_profile, get_country_indicators
+from fastapi import APIRouter, HTTPException
+from app.services.ibge_services import get_countries, get_country_profile, get_country_indicators
 
 router = APIRouter()
 
