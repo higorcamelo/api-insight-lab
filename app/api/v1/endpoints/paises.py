@@ -1,11 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from app.services.ibge_services import get_countries, get_country_profile, get_country_indicators
+from app.services.ibge_services import get_country_profile, get_country_indicators
 
 router = APIRouter()
-
-@router.get("/countries")
-def read_countries(lang: str = "PT"):
-    return get_countries(lang)
 
 @router.get("/countries/{country_codes}")
 def read_country_profile(country_codes: str, lang: str = "PT"):

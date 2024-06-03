@@ -44,3 +44,32 @@ Esta API fornece dados dos países utilizando a API do IBGE. Abaixo está um gui
 
 **Exemplo:** `/api/v1/countries/BR/indicators/77819|77820?period=2016`  
 **Descrição:** Retorna os indicadores especificados para o país especificado no período especificado.
+
+## Docker
+
+### Construir a imagem Docker
+
+Para construir a imagem Docker da aplicação, utilize o seguinte comando:
+
+```sh
+docker build -t api-insight-lab .
+```
+### Executar o container Docker
+
+Para executar o container Docker, utilize o seguinte comando:
+
+```sh
+
+docker run -d -p 8000:8000 --name api-insight-lab-container api-insight-lab
+
+```
+
+### Parar e remover o container Docker
+
+Quando quiser parar e remover o container, utilize os seguintes comandos:
+
+```sh
+
+docker stop api-insight-lab-container
+docker rm api-insight-lab-container
+```
