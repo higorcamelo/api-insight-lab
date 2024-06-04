@@ -7,12 +7,6 @@ app = FastAPI(title="API Insight Lab", description="API que fornece dados dos pa
 def read_root():
     return {"message": "Bem vindo(a) a API do IBGE! Feito via FastAPI para o Insight Lab! :)"}
 
-
-
-@app.get("/api/v1/countries", summary="Listar todos os países", description="Retorna a lista de todos os países disponíveis na API do IBGE.")
-async def read_countries(lang: str = Query("PT", description="Idioma dos dados retornados: PT (Português), EN (Inglês), ES (Espanhol)")):
-    return get_countries(lang)
-
 @app.get("/api/v1/countries/{country_code}", summary="Obter o perfil de um país específico", description="Retorna o perfil do país especificado pelo código ISO 3166-1 ALPHA-2.")
 async def read_country_profile(country_code: str, lang: str = Query("PT", description="Idioma dos dados retornados: PT (Português), EN (Inglês), ES (Espanhol)")):
     return get_country_profile(country_code, lang)
