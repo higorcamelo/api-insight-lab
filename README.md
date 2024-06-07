@@ -6,12 +6,6 @@ Esta API fornece dados dos países utilizando a API do IBGE. Abaixo está um gui
 
 ## Endpoints
 
-### Listar todos os países
-
-**URL:** `/api/v1/countries`  
-**Método:** `GET`  
-**Descrição:** Retorna a lista de todos os países.
-
 ### Obter o perfil de um país específico
 
 **URL:** `/api/v1/countries/{country_code}`  
@@ -44,6 +38,18 @@ Esta API fornece dados dos países utilizando a API do IBGE. Abaixo está um gui
 
 **Exemplo:** `/api/v1/countries/BR/indicators/77819|77820?period=2016`  
 **Descrição:** Retorna os indicadores especificados para o país especificado no período especificado.
+
+### Obter indicadores de múltiplos países
+
+**URL:** `/api/v1/countries/indicators`  
+**Método:** `GET`  
+**Parâmetros:**
+- `country_codes` (string): Os códigos ISO 3166-1 ALPHA-2 dos países, separados por pipe (|).
+- `indicator_ids` (string, opcional): Os identificadores dos indicadores separados por pipe (|).
+- `period` (string, opcional): O período para filtrar os indicadores.
+
+**Exemplo:** `/api/v1/countries/indicators?country_codes=BR|AR&indicator_ids=77819|77820&period=2016`  
+**Descrição:** Retorna os indicadores especificados para os países especificados, filtrados pelo período especificado.
 
 ## Docker
 
