@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Query
-from .services.ibge_services import get_countries, get_country_profile, get_country_indicators
+from .services.ibge_services import get_country_profile, get_country_indicators
 
 app = FastAPI(title="API Insight Lab", description="API que fornece dados dos países utilizando a API do IBGE.", version="1.0.0")
 
