@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 URL_IBGE = os.getenv("URL_IBGE")
 
+# Adicionar logs para verificar se a variável está sendo carregada corretamente
+print(f"URL_IBGE from .env: {URL_IBGE}")
+
+if URL_IBGE is None:
+    raise ValueError("A variável de ambiente URL_IBGE não está definida")
+
 def get_country_profile(country_code: str, lang: str = "PT"):
     url = f"{URL_IBGE}/paises/{country_code}?lang={lang}"
     print(f"Request URL: {url}")  # Log para depuração
@@ -54,11 +60,8 @@ def get_all_countries(lang: str = "PT"):
     return response.json()
 
 def get_all_indicators(lang: str = "PT"):
-    url = f"{URL_IBGE}/paises/indicadores"
-    print(f"Request URL: {url}")  # Log para depuração
+    url = f"{URL_IBGE}/paises/indicadores?lang={lang}"
     response = requests.get(url)
-    print(f"Response Status Code: {response.status_code}")  # Log para depuração
     if response.status_code != 200:
-        print(f"Response Content: {response.content}")  # Log para depuração
         raise HTTPException(status_code=response.status_code, detail="Erro ao acessar a API do IBGE")
     return response.json()
