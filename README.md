@@ -1,5 +1,3 @@
-# API Insight Lab
-
 ## Descrição
 
 Esta API fornece dados dos países utilizando a API do IBGE. Abaixo está um guia de navegação para ajudá-lo a entender como utilizar os diferentes endpoints.
@@ -12,9 +10,10 @@ Esta API fornece dados dos países utilizando a API do IBGE. Abaixo está um gui
 **Método:** `GET`  
 **Parâmetros:**
 - `country_code` (string): O código ISO 3166-1 ALPHA-2 do país.
+- `lang` (string, opcional): Idioma dos dados retornados: PT (Português), EN (Inglês) ou ES (Espanhol). Valor padrão é PT.
 
 **Exemplo:** `/api/v1/countries/BR`  
-**Descrição:** Retorna o perfil do país especificado.
+**Descrição:** Retorna informações detalhadas sobre um país específico, incluindo dados geográficos, políticos e históricos.
 
 ### Obter indicadores de um país específico
 
@@ -23,33 +22,31 @@ Esta API fornece dados dos países utilizando a API do IBGE. Abaixo está um gui
 **Parâmetros:**
 - `country_code` (string): O código ISO 3166-1 ALPHA-2 do país.
 - `indicator_ids` (string): Os identificadores dos indicadores separados por pipe (|).
+- `period` (string, opcional): Filtra os indicadores por períodos específicos.
 
 **Exemplo:** `/api/v1/countries/BR/indicators/77819|77820`  
-**Descrição:** Retorna os indicadores especificados para o país especificado.
-
-### Obter indicadores de um país específico para um período
-
-**URL:** `/api/v1/countries/{country_code}/indicators/{indicator_ids}?period={period}`  
-**Método:** `GET`  
-**Parâmetros:**
-- `country_code` (string): O código ISO 3166-1 ALPHA-2 do país.
-- `indicator_ids` (string): Os identificadores dos indicadores separados por pipe (|).
-- `period` (string, opcional): O período para filtrar os indicadores.
-
-**Exemplo:** `/api/v1/countries/BR/indicators/77819|77820?period=2016`  
-**Descrição:** Retorna os indicadores especificados para o país especificado no período especificado.
+**Descrição:** Retorna indicadores socioeconômicos e ambientais específicos de um país, organizados em uma série e em valores numéricos.
 
 ### Obter indicadores de múltiplos países
 
 **URL:** `/api/v1/countries/indicators`  
 **Método:** `GET`  
 **Parâmetros:**
-- `country_codes` (string): Os códigos ISO 3166-1 ALPHA-2 dos países, separados por pipe (|).
-- `indicator_ids` (string, opcional): Os identificadores dos indicadores separados por pipe (|).
-- `period` (string, opcional): O período para filtrar os indicadores.
+- `country_codes` (string, opcional): Filtra os países por seus códigos de país, separados por pipe (|).
+- `period` (string, opcional): Filtra os indicadores por períodos específicos.
 
-**Exemplo:** `/api/v1/countries/indicators?country_codes=BR|AR&indicator_ids=77819|77820&period=2016`  
-**Descrição:** Retorna os indicadores especificados para os países especificados, filtrados pelo período especificado.
+**Exemplo:** `/api/v1/countries/indicators?country_codes=BR|AR&period=2016`  
+**Descrição:** Retorna múltiplos indicadores disponíveis sobre um país específico, filtrados por períodos opcionais.
+
+### Obter lista de todos os países disponíveis
+
+**URL:** `/api/v1/countries`  
+**Método:** `GET`  
+**Parâmetros:**
+- `lang` (string, opcional): Idioma dos dados retornados: PT (Português), EN (Inglês) ou ES (Espanhol). Valor padrão é PT.
+
+**Exemplo:** `/api/v1/countries`  
+**Descrição:** Retorna uma lista de todos os países disponíveis na API do IBGE.
 
 ## Docker
 
