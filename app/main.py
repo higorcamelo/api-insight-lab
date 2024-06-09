@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from app.routers import paises
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
 app = FastAPI(title="API Insight Lab", description="API que fornece dados dos países utilizando a API do IBGE.", version="1.0.0")
 
 @app.get("/")
